@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: test-activemq
+  artemis:
+    broker-url: (tcp://localhost:4531)
+    pool:
+      enabled: true
+      max-connections: 50
+    mode: native
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+  port: 6699
+  shutdown: graceful
+logging:
+  file:
+    name: logs/test-activemq.log
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    path: /artemis-service.html
