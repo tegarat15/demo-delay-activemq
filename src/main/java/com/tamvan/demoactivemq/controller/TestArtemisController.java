@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.jms.JMSException;
-
 @RestController
 @RequestMapping("/v1/send-data-artemis")
 @RequiredArgsConstructor
@@ -21,7 +19,7 @@ public class TestArtemisController {
     private final Sender sender;
 
     @PostMapping("/sync")
-    public HttpEntity<?> sendDataToActiveMqArtemis(@RequestBody SenderRequest request) throws JMSException {
+    public HttpEntity<?> sendDataToActiveMqArtemis(@RequestBody SenderRequest request) {
         sender.kirimPesan(request.getMessage(), request.getDelayed());
         return new ResponseEntity<>("Terkirim", HttpStatus.OK);
     }
