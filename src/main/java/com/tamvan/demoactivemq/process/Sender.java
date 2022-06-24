@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
-import org.springframework.jms.core.MessagePostProcessor;
 import org.springframework.stereotype.Service;
 
-import javax.jms.JMSException;
 import javax.jms.Message;
 
 @Service

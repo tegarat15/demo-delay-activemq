@@ -1,12 +1,8 @@
 package com.tamvan.demoactivemq.process;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
-
-import javax.jms.TextMessage;
 
 @Service
 @RequiredArgsConstructor
