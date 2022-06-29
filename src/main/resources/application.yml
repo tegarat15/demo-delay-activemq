@@ -2,7 +2,8 @@ spring:
   application:
     name: test-activemq
   artemis:
-    broker-url: (tcp://localhost:4531)
+#    broker-url: (tcp://localhost:4531)
+    broker-url: (tcp://localhost:61616)
     pool:
       enabled: true
       max-connections: 50
