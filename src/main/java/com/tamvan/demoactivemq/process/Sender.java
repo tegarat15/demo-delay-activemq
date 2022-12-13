@@ -18,27 +18,17 @@ public class Sender {
     private final JmsTemplate jmsTemplate;
 
     public void kirimPesan(String message, Long scheduled) {
-        setLongDelayedMessage(scheduled);
-        setExpiry();
-        sendData(constructMessageCreator(message));
+        sendData(constructMessageCreator(message, scheduled));
     }
 
     private void sendData(MessageCreator messageCreator) {
         jmsTemplate.send("tamvan", messageCreator);
     }
 
-    private void setExpiry() {
-        jmsTemplate.setExplicitQosEnabled(true);
-        jmsTemplate.setTimeToLive(120000);
-    }
-
-    private void setLongDelayedMessage(Long scheduled) {
-        jmsTemplate.setDeliveryDelay(scheduled);
-    }
-
-    private MessageCreator constructMessageCreator(String message) {
+    private MessageCreator constructMessageCreator(String message, Long scheduled) {
         MessageCreator messageCreator = session -> {
             Message messageCreated = session.createTextMessage(message);
+            messageCreated.setLongProperty("_AMQ_SCHED_DELIVERY", System.currentTimeMillis() + scheduled);
             return messageCreated;
         };
         return messageCreator;
