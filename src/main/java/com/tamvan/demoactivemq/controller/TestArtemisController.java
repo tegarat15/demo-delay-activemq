@@ -23,4 +23,10 @@ public class TestArtemisController {
         sender.kirimPesan(request.getMessage(), request.getDelayed());
         return new ResponseEntity<>("Terkirim", HttpStatus.OK);
     }
+
+    @PostMapping("/test")
+    public HttpEntity<?> testDataToActiveMqArtemis() {
+        sender.testKirimPesan();
+        return new ResponseEntity<>("Terkirim", HttpStatus.OK);
+    }
 }

@@ -8,6 +8,8 @@ spring:
       enabled: true
       max-connections: 50
     mode: native
+    embedded:
+      persistent: true
 server:
   compression:
     enabled: true

@@ -16,6 +16,11 @@ public class ArtemisListener {
         receiver.loggingMessage(content);
     }
 
+    @JmsListener(destination = "tegar-tamvan")
+    public void processMessageOther(String content){
+        receiver.loggingMessage(content);
+    }
+
     @JmsListener(destination = "ExpiryQueue")
     public void processExpiredMessage(String content){
         receiver.loggingMessage("Expired : " + content);
